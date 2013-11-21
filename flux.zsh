@@ -12,6 +12,7 @@ else
 	echo "Latitude : "$LATITUDE
 	echo "Longitude : "$LONGITUDE
 	save $1
+	"Saved ! flux resume to launch."
 fi
 }
 
