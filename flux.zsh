@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 function launch {
 if [ $1 =  "grenoble" ]
 then
@@ -10,8 +12,16 @@ then
 	xflux -l 36.1 -g 140.1 > /dev/null
 
 else 
-	echo "Unknown Location"
+	echo "Unknown Location, searching on OSM"
+	search $2
 fi
+}
+
+function search {
+RAW_XML=$(wget -qO- "http://nominatim.openstreetmap.org/search?q="$1"&format=xml&limit=1" | sed 's/ /\n/g')
+LATITUDE=$(echo $RAW_XML | grep lat= | sed 's/lat\=//' | sed "s/'//g")
+LONGITUDE=$(echo $RAW_XML | grep lon= | sed 's/lon\=//' | sed "s/'//g")
+echo $LATITUDE"\n"$LONGITUDE
 }
 
 if [ $1 = "launch" ]
@@ -32,6 +42,9 @@ then
 elif [ $1 = "resume" ]
 then
 	launch $(cat ~/.flux)
+elif [ $1 = "search" ]
+then
+	search $2
 
 else
 	echo "Unknown command"
