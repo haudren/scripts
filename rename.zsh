@@ -4,7 +4,7 @@ ALBUM=$(metaflac --show-tag=ALBUM $1 | sed -e 's/.*=//')
 for file in $@
 do
 	TRACKNUMBER=$(metaflac --show-tag=TRACKNUMBER $file | sed -e 's/.*=//')
-	TITLE=$(metaflac --show-tag=TITLE $file | sed -e 's/.*=//')
+	TITLE=$(metaflac --show-tag=TITLE $file | sed -e 's/.*=//' | sed -e 's/\//_/g')
 
 	if [ $TRACKNUMBER -ge 10 ]
 	then
