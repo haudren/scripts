@@ -1,16 +1,11 @@
 #!/bin/zsh
 
 function launch {
-if [ $1 =  "grenoble" ]
+if [ -f $1 ]
 then
-	echo "Launching xflux for Grenoble, France"
-	xflux -l 45.2 -g 5.7 > /dev/null
-
-elif [ $1 = "tsukuba" ]
-then
-	echo "Launching xflux for Tsukuba, Japan"
-	xflux -l 36.1 -g 140.1 > /dev/null
-
+	echo "Launching xflux with "$1" as city"
+	load $1
+	xflux -l $LATITUDE -g $LONGITUDE > /dev/null	
 else 
 	echo "Unknown Location, searching on OSM"
 	search $1
@@ -37,6 +32,13 @@ function save {
 	fi
 }
 
+function load {
+	read line < "$1"
+	LATITUDE=$line
+	read line < "$1"
+	LONGITUDE=$line
+}
+
 cd ~/.flux
 CITY=$2
 if [ $1 = "launch" ]
@@ -56,7 +58,7 @@ then
 
 elif [ $1 = "resume" ]
 then
-	launch $(cat ~/.flux)
+	launch $(cat last_location)
 elif [ $1 = "search" ]
 then
 	search $CITY
