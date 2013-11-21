@@ -17,6 +17,12 @@ fi
 if [ $1 = "launch" ]
 then
 	echo $2 > ~/.flux
+	FLUX_PID=$(pgrep xflux)
+	if [ $FLUX_PID ]
+	then
+		echo "Stopping previous flux"
+		killall xflux
+	fi
 	launch $2
 
 elif [ $1 = "stop" ]
