@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -f  $1 ]
+then
+	echo "Please supply a distro name"
+else
+	if [ "$1" == "fuerte" ]
+	then
+		export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home/herve/ros/fuerte_workspace
+	elif [ "$1" == "hydro" ]
+	then
+		export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home/herve/ros/hydro_workspace
+	fi
+fi
