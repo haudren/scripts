@@ -27,6 +27,7 @@ alias indigo='source /home/herve/ros/indigo_workspace/setup.zsh'
 alias pkgfuerte='export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home/herve/ros/fuerte_workspace'
 alias pkghydro='export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home/herve/ros/hydro_workspace'
 alias bag_error='/home/herve/scripts/bag_error.py'
+alias pulse-switch='/home/herve/scripts/pulse_switch.zsh'
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
