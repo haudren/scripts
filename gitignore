@@ -1,0 +1,10 @@
+#C++
+build/*
+*.out
+#Latex
+*.synctex.gz
+*.aux
+*.log
+*.pdf
+#Vim
+*.swp
