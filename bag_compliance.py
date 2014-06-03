@@ -45,8 +45,8 @@ print "Post-treatment"
 energy = [e[joint]*ed[joint] for e, ed in zip(error, error_dot)]
 
 jd = [d[joint] for d in disable]
-dt = max(jd)
-et = min(jd)
+dt = max(max(jd), 1)
+et = min(min(jd), -1)
 disabling = [i for i, j in enumerate(jd) if j == dt]
 enabling = [i for i, j in enumerate(jd) if j == et]
 
@@ -58,6 +58,7 @@ ax.plot([e[joint-1] for e in q])
 print "-Desired"
 ax.plot([e[joint-1] for e in qd])
 
+print "-Disable (%s)" % str(len(disabling))
 for d in disabling:
   ax.axvspan(d, d+dt, facecolor='r', alpha=0.2)
 for e in enabling:
