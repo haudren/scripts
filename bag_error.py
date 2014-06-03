@@ -67,9 +67,9 @@ else:
 assert len(torque_mes) == len(torque_model)
 
 dic = json.load(open('/home/herve/.ros/torques.json'))
-gain = dic['RARM_JOINT1']['gain']
-offset = dic['RARM_JOINT1']['offset']
-variance = dic['RARM_JOINT1']['std_dev']
+gain = dic[args.joint]['gain']
+offset = dic[args.joint]['offset']
+variance = dic[args.joint]['std_dev']
 
 torque_est = map(lambda x: gain*x + offset, torque_model)
 torque_sup = map(lambda x: 3*variance + x, torque_est)
