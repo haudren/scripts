@@ -31,73 +31,97 @@ parser.add_argument("joint", help="Joint name")
 args = parser.parse_args()
 
 bagfile = args.bagfile
+joint = args.joint
 
-bag = rosbag.Bag(bagfile)
+class Bag_error:
+  def __init__(self, bagfile, joint):
+    print "Reading %s" % bagfile
+    bag = rosbag.Bag(bagfile)
+    self.joint = joint
+    self.sensors_msgs = map(lambda x: x[1], list(bag.read_messages(topics=['/robot/sensors/robot_state'])))
+    self.filters_msgs = map(lambda x: x[1], list(bag.read_messages(topics=['/robot/sensors/robot_state_filtered'])))
+    self.controls_msgs = map(lambda x: x[1], list(bag.read_messages(topics=['/robot/controls/joint_states'])))
 
-sensors_msgs = map(lambda x: x[1], list(bag.read_messages(topics=['/robot/sensors/robot_state'])))
-filters_msgs = map(lambda x: x[1], list(bag.read_messages(topics=['/robot/sensors/robot_state_filtered'])))
-controls_msgs = map(lambda x: x[1], list(bag.read_messages(topics=['/robot/controls/joint_states'])))
+  def extractInfo(self):
+    print "Reading info for %s and adjusting lengths..." % self.joint
+    index = controls_msgs[0].name.index(self.joint)
 
-index = controls_msgs[0].name.index(args.joint)
+    min_len = min([len(self.sensors_msgs), len(self.controls_msgs),\
+        len(self.filters_msgs)])
 
-min_len = min([len(sensors_msgs), len(controls_msgs), len(filters_msgs)])
+    diff = len(sensors_msgs) - min_len
+    if diff > 0:
+      self.torque_mes = [sensor.joint_effort[index] for sensor in self.sensors_msgs[diff:]]
+      self.pos_mes = [sensor.joint_position[index] for sensor in self.sensors_msgs[diff:]]
+    else:
+      self.torque_mes = [sensor.joint_effort[index] for sensor in self.sensors_msgs]
+      self.pos_mes = [sensor.joint_position[index] for sensor in self.sensors_msgs]
 
-diff = len(sensors_msgs) - min_len
-if diff > 0:
-  torque_mes = [sensor.joint_effort[index] for sensor in sensors_msgs[diff:]]
-  pos_mes = [sensor.joint_position[index] for sensor in sensors_msgs[diff:]]
-else:
-  torque_mes = [sensor.joint_effort[index] for sensor in sensors_msgs]
-  pos_mes = [sensor.joint_position[index] for sensor in sensors_msgs]
+    diff = len(self.controls_msgs) - min_len
+    if diff > 0:
+      self.torque_model = [control.effort[index] for control in self.controls_msgs[diff:]]
+      self.pos_model = [control.position[index] for control in self.controls_msgs[diff:]]
+    else:
+      self.torque_model = [control.effort[index] for control in self.controls_msgs]
+      self.pos_model = [control.position[index] for control in self.controls_msgs]
 
-diff = len(controls_msgs) - min_len
-if diff > 0:
-  torque_model = [control.effort[index] for control in controls_msgs[diff:]]
-  pos_model = [control.position[index] for control in controls_msgs[diff:]]
-else:
-  torque_model = [control.effort[index] for control in controls_msgs]
-  pos_model = [control.position[index] for control in controls_msgs]
+    diff = len(self.filters_msgs) - min_len
+    if diff > 0:
+      self.torque_filt = [filter.joint_effort[index] for filter in self.filters_msgs[diff:]]
+    else:
+      self.torque_filt = [filter.joint_effort[index] for filter in self.filters_msgs]
 
-diff = len(filters_msgs) - min_len
-if diff > 0:
-  torque_filt = [filter.joint_effort[index] for filter in filters_msgs[diff:]]
-else:
-  torque_filt = [filter.joint_effort[index] for filter in filters_msgs]
+    assert len(self.torque_mes) == len(self.torque_model)
 
-assert len(torque_mes) == len(torque_model)
+  def computeTorques(self):
+    print "Computing torques..."
+    dic = json.load(open('/home/herve/.ros/torques.json'))
+    gain = dic[self.joint]['gain']
+    offset = dic[self.joint]['offset']
+    variance = dic[self.joint]['std_dev']
 
-dic = json.load(open('/home/herve/.ros/torques.json'))
-gain = dic[args.joint]['gain']
-offset = dic[args.joint]['offset']
-variance = dic[args.joint]['std_dev']
+    self.torque_est = map(lambda x: gain*x + offset, self.torque_model)
+    self.torque_sup = map(lambda x: 3*variance + x, self.torque_est)
+    self.torque_inf = map(lambda x: -3*variance + x, self.torque_est)
 
-torque_est = map(lambda x: gain*x + offset, torque_model)
-torque_sup = map(lambda x: 3*variance + x, torque_est)
-torque_inf = map(lambda x: -3*variance + x, torque_est)
-#pylab.plot(torque_model, 'b')
+  def plotTorques(self):
+    print "Plotting torques..."
+    pylab.fill_between(range(len(self.torque_est)), self.torque_sup,\
+        self.torque_inf, facecolor='blue', alpha=0.3)
+    pylab.plot(self.torque_est, 'b')
+    pylab.plot(self.torque_mes, 'r', alpha=0.1)
+    pylab.plot(self.torque_filt,'r')
+    pylab.show()
 
-def plotTorques():
-  pylab.fill_between(range(len(torque_est)), torque_sup, torque_inf,\
-      facecolor='blue', alpha=0.3)
-  pylab.plot(torque_est, 'b')
-  pylab.plot(torque_mes, 'r', alpha=0.1)
-  pylab.plot(torque_filt,'r')
-  pylab.show()
+  def torques(self, joint):
+    self.joint = joint
+    self.extractInfo()
+    self.computeTorques()
+    self.plotTorques()
 
-def plotPos():
-  err = map(lambda x,y: x-y, pos_model, pos_mes)
-  f, axarr = pylab.subplots(2, sharex=True)
-  p1, = axarr[0].plot(pos_model)
-  p2, = axarr[0].plot(pos_mes)
-  p3, = axarr[1].plot(err)
-  pylab.legend([p1, p2, p3], ["Desired", "Measure", "Error"])
-  pylab.show()
+  def plotPos(self):
+    print "Plotting positions..."
+    self.err = map(lambda x,y: x-y, self.pos_model, self.pos_mes)
+    f, axarr = pylab.subplots(2, sharex=True)
+    p1, = axarr[0].plot(self.pos_model)
+    p2, = axarr[0].plot(self.pos_mes)
+    p3, = axarr[1].plot(self.err)
+    pylab.legend([p1, p2, p3], ["Desired", "Measure", "Error"])
+    pylab.show()
 
-plotPos()
+  def positions(self, joint):
+    self.joint = joint
+    self.extractInfo()
+    self.plotPos()
+
+bag_error = Bag_error(bagfile, joint)
+bag_error.extractInfo()
+bag_error.computeTorques()
+bag_error.plotPos()
 #filt = syncStamp(sensors_msgs, controls_msgs)
 #filt_pos = [f.joint_position for f in filt]
 
 #r_wrist_error = [sens[21] - cont[21] for sens, cont in zip(filt_pos, controls)]
 
 #pylab.plot(r_wrist_error)
-#pylab.show()
+                                                                #pylab.show()
