@@ -44,12 +44,12 @@ class Bag_error:
 
   def extractInfo(self):
     print "Reading info for %s and adjusting lengths..." % self.joint
-    index = controls_msgs[0].name.index(self.joint)
+    index = self.controls_msgs[0].name.index(self.joint)
 
     min_len = min([len(self.sensors_msgs), len(self.controls_msgs),\
         len(self.filters_msgs)])
 
-    diff = len(sensors_msgs) - min_len
+    diff = len(self.sensors_msgs) - min_len
     if diff > 0:
       self.torque_mes = [sensor.joint_effort[index] for sensor in self.sensors_msgs[diff:]]
       self.pos_mes = [sensor.joint_position[index] for sensor in self.sensors_msgs[diff:]]
