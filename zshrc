@@ -19,6 +19,7 @@ alias updtex=/home/herve/scripts/update_latex
 alias flacrename=/home/herve/scripts/rename.zsh
 alias glcplay='aoss glc-play'
 alias julia=/home/herve/git/julia/julia
+alias perf=/home/herve/scripts/perf.zsh
 
 alias fuerte='source /home/herve/ros/fuerte_workspace/setup.zsh'
 alias hydro='source /home/herve/ros/hydro_workspace/setup.zsh'
