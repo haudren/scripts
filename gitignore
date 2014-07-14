@@ -6,5 +6,7 @@ build/*
 *.aux
 *.log
 *.pdf
+#Python
+*.pyc
 #Vim
 *.swp
