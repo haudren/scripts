@@ -51,3 +51,52 @@ function scr_mode
 	restart_xmonad
 	select_wallpaper
 }
+
+function get_active_screens
+{
+	screens=$(xrandr | grep " connected" | sed -e 's/\s.*//')
+}
+
+function nr_screens
+{
+	get_active_screens
+	nr_scr=$(echo $screens | wc -l)
+}
+
+function switch_screens
+{
+	nr_screens
+	if [[ $nr_scr -gt 1 ]]
+	then
+		echo 'Switching to dual'
+		set_screens
+		scr_mode dual
+	else
+		set_screens
+		scr_mode single
+	fi
+}
+
+function set_screens
+{
+	get_active_screens
+	if [[ $screens =~ "eDP-1-0" ]]
+	then
+		primary="eDP-1-0"
+	else
+		set -- $screens
+		primary=$1
+	fi
+	screens=$(echo $screens | sed -e "s/\b$primary\b//g")
+
+	xcom="xrandr --output "$primary" --auto"
+	previous=$primary
+
+	for screen in $screens
+	do
+		xcom=$xcom" --output "$screen" --auto --right-of "$previous
+		previous=$screen
+	done
+	eval $xcom
+}
+
