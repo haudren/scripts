@@ -31,5 +31,11 @@
 		"link": {
 			"~/.vim": "vim/"
 			}
+	},
+	{
+		"shell": [
+				["wget --no-check-certificate http://install.ohmyz.sh -O - | sh", "Installing oh-my-zsh"],
+				["cd ~/.oh-my-zsh && git remote add upstream https://github.com/haudren/oh-my-zsh.git", "Adding custom remote"]
+			]
 	}
 ]
