@@ -9,7 +9,7 @@
 			"~/.zshrc": "zshrc",
 			"~/.xmobarrc": "xmonad/xmobarrc",
 			"~/.xmonad/xmonad.hs": "xmonad/xmonad.hs",
-			"~/.xmonad/start-xmonad": "xmonad/start-xmonad",
+			"~/.xmonad/start-xmonad": "xmonad/start-xmonad"
 			}
 	},
 	{
@@ -19,6 +19,7 @@
 	},
 	{
 		"link": {
-			"~/.vim": "vim/",
-	},
+			"~/.vim": "vim/"
+			}
+	}
 ]
