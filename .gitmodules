@@ -1,0 +1,9 @@
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+[submodule "vim/vim-surround"]
+	path = vim/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/vim-ipython"]
+	path = vim/vim-ipython
+	url = https://github.com/ivanov/vim-ipython.git
