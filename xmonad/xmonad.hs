@@ -8,6 +8,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Fullscreen
 import System.IO
 import XMonad.Layout.IndependentScreens
+import XMonad.Hooks.EwmhDesktops
 
 myWorkspaces = ["1:main","2:xp","3:py","4:mail"] ++ map show [5..9]
 
@@ -22,7 +23,7 @@ myLayoutHooks = smartBorders $ avoidStruts ( tiled ||| Mirror tiled ||| noBorder
 
 main = do
     xmproc <- spawnPipe "xmobar"
-    xmonad $ defaultConfig {
+    xmonad $ ewmh defaultConfig {
 		workspaces = myWorkspaces,
 		manageHook = myManageHooks,
 		layoutHook = myLayoutHooks,

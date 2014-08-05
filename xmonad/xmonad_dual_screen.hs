@@ -10,6 +10,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Fullscreen
 import System.IO
 import XMonad.Layout.IndependentScreens
+import XMonad.Hooks.EwmhDesktops
 
 myWorkspaces = withScreens 2 $ ["1:main","2:xp","3:py","4:mail"] ++ map show [5..9]
 
@@ -56,7 +57,7 @@ myKeys = [
 
 main = do
     xmproc <- spawnPipe "xmobar"
-    xmonad $ defaultConfig {
+    xmonad $ ewmh defaultConfig {
 		workspaces = myWorkspaces,
 		manageHook = myManageHooks,
 		layoutHook = myLayoutHooks,
