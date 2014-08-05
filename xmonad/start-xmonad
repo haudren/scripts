@@ -1,0 +1,6 @@
+#!/bin/zsh
+source $HOME/scripts/xmonad.zsh
+
+switch_screens
+
+exec xmonad
