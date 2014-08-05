@@ -5,6 +5,7 @@ set number
 set splitbelow
 set splitright
 set autoindent
+set title titlestring=
 
 :au FocusLost * :set number
 :au FocusGained * :set relativenumber
