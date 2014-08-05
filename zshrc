@@ -29,6 +29,8 @@ alias pkgfuerte='export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home/herve/ros/fuert
 alias pkghydro='export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home/herve/ros/hydro_workspace'
 alias bag_error='/home/herve/scripts/bag_error.py'
 alias pulse-switch='/home/herve/scripts/pulse_switch.zsh'
+
+alias rosservice='noglob rosservice'
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -60,9 +62,17 @@ alias pulse-switch='/home/herve/scripts/pulse_switch.zsh'
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 stty stop undef # to unmap ctrl-s
+
+#Expand fpath:
+
 source $ZSH/oh-my-zsh.sh
 source $HOME/scripts/calc
 source $HOME/scripts/hrp2_scripts.zsh
 source $HOME/scripts/xmonad.zsh
+source $HOME/scripts/ros.zsh
 # Customize to your needs...
 export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
+fpath=($HOME/scripts/completions $fpath)
+autoload -U compinit
+compinit
