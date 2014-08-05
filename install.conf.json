@@ -5,7 +5,6 @@
 	{
 		"link": {
 			"~/.vimrc": "vimrc",
-			"~/.vim": "vim/"
 			"~/.gitignore": "gitignore"
 			"~/.zshrc": "zshrc"
 			"~/.xmobarrc": "xmonad/xmobarrc"
@@ -17,5 +16,9 @@
 		"shell": [
 				["git submodule update --init --recursive", "Installing submodules"]
 			 ]
+	},
+	{
+		"link": {
+			"~/.vim": "vim/"
 	},
 ]
