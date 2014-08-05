@@ -13,7 +13,7 @@
 	{
 		"shell": [
 			["git config --global core.excludesfile ~/.gitgnore", "Setting up gitignore"],
-			["mkdir ~/.xmonad", "Creating xmonad folder"]
+			["mkdir -p ~/.xmonad", "Creating xmonad folder"]
 		]
 	},
 	{
