@@ -68,7 +68,7 @@ stty stop undef # to unmap ctrl-s
 source $ZSH/oh-my-zsh.sh
 source $HOME/scripts/calc
 source $HOME/scripts/hrp2_scripts.zsh
-source $HOME/scripts/xmonad.zsh
+source $HOME/scripts/xmonad/xmonad.zsh
 source $HOME/scripts/ros.zsh
 # Customize to your needs...
 export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games

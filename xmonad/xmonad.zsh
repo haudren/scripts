@@ -37,7 +37,7 @@ function select_wallpaper
 function set_xmonad
 {
 	rm $HOME/.xmonad/$config
-	ln -s $HOME/scripts/$1 $HOME/.xmonad/$config
+	ln -s $HOME/scripts/xmonad/$1 $HOME/.xmonad/$config
 }
 
 function restart_xmonad
