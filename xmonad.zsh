@@ -6,9 +6,18 @@ dual='xmonad_dual_screen.hs'
 
 function get_resolution
 {
-	dim=$(xdpyinfo | grep 'dimensions' | sed -e 's/\s*dimensions:\s*//' | sed -e 's/\s*pixels.*//')
-	resx=$(echo $dim | cut -d x -f 1)
-	resy=$(echo $dim | cut -d x -f 2)
+	scrlist=$(xrandr | grep " connected")
+	scrarr=(${(f)scrlist})
+	resx=0
+	resy=0
+	for scr in ${scrarr[@]}
+	do
+		dim=$(echo $scr | grep -o '[0-9]\+x[0-9]\+')
+		curx=$(echo $dim | cut -d x -f 1)
+		cury=$(echo $dim | cut -d x -f 2)
+		((resx = resx + curx))
+		((resy = cury > resy ? cury : resy))
+	done
 }
 
 function select_wallpaper
@@ -57,6 +66,12 @@ function get_active_screens
 	screens=$(xrandr | grep " connected" | sed -e 's/\s.*//')
 }
 
+function get_inactive_screens
+{
+	screens=$(xrandr | grep "disconnected" | sed -e 's/\s.*//')
+	screens=(${(f)screens})
+}
+
 function nr_screens
 {
 	get_active_screens
@@ -72,6 +87,7 @@ function switch_screens
 		set_screens
 		scr_mode dual
 	else
+		echo 'Switching to single'
 		set_screens
 		scr_mode single
 	fi
@@ -79,13 +95,22 @@ function switch_screens
 
 function set_screens
 {
+	get_inactive_screens
+	echo "Disactivating all disconnected screens"
+	for screen in ${screens[@]}
+	do
+		xrandr --output $screen --off
+	done
+
 	get_active_screens
 	if [[ $screens =~ "eDP-1-0" ]]
 	then
+		echo 'eDP-1-0 is primary'
 		primary="eDP-1-0"
 	else
 		set -- $screens
 		primary=$1
+		echo primary" is primary"
 	fi
 	screens=$(echo $screens | sed -e "s/\b$primary\b//g")
 
@@ -94,9 +119,11 @@ function set_screens
 
 	for screen in $screens
 	do
+		echo $screen" is secondary"
 		xcom=$xcom" --output "$screen" --auto --right-of "$previous
 		previous=$screen
 	done
+	echo "Found all screens"
 	eval $xcom
 }
 
