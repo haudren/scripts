@@ -31,7 +31,7 @@
 		"link": {
 			"~/.vim": "vim/",
 			"~/.oh-my-zsh": "zsh/oh-my-zsh",
-			"~/.oh-my-zsh/custom/themes/cloud.theme-zsh": "zsh/cloud.theme-zsh"
+			"~/.oh-my-zsh/custom/themes/cloud.zsh-theme": "zsh/cloud.zsh-theme"
 			}
 	}
 ]
