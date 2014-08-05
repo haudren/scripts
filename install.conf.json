@@ -7,7 +7,16 @@
 			"~/.vimrc": "vimrc",
 			"~/.gitignore": "gitignore",
 			"~/.zshrc": "zshrc",
-			"~/.xmobarrc": "xmonad/xmobarrc",
+			"~/.xmobarrc": "xmonad/xmobarrc"
+		}
+	},
+	{
+		"shell": [
+			["mkdir ~/.xmonad", "Creating xmonad folder"]
+		]
+	},
+	{
+		"link": {
 			"~/.xmonad/xmonad.hs": "xmonad/xmonad.hs",
 			"~/.xmonad/start-xmonad": "xmonad/start-xmonad"
 			}
