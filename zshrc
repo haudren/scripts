@@ -12,23 +12,18 @@ ZSH_THEME="cloud"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ...='cd ../..'
 alias -g ....=../../..
-alias sshinit=/home/herve/scripts/ssh_init
-alias updgit=/home/herve/scripts/update_com_preview
-alias updloc=/home/herve/scripts/update_code_com
-alias updtex=/home/herve/scripts/update_latex
-alias flacrename=/home/herve/scripts/rename.zsh
+
 alias glcplay='aoss glc-play'
 alias julia=/home/herve/git/julia/julia
-alias perf=/home/herve/scripts/perf.zsh
 
 alias fuerte='source /home/herve/ros/fuerte_workspace/setup.zsh'
 alias hydro='source /home/herve/ros/hydro_workspace/setup.zsh'
 alias indigo='source /home/herve/ros/indigo_workspace/setup.zsh'
+alias ladder='source /home/herve/ros/ladder_workspace/setup.zsh'
 
 alias pkgfuerte='export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home/herve/ros/fuerte_workspace'
 alias pkghydro='export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home/herve/ros/hydro_workspace'
 alias bag_error='/home/herve/scripts/bag_error.py'
-alias pulse-switch='/home/herve/scripts/pulse_switch.zsh'
 
 alias rosservice='noglob rosservice'
 # Set to this to use case-sensitive completion
@@ -71,7 +66,7 @@ source $HOME/scripts/hrp2_scripts.zsh
 source $HOME/scripts/xmonad/xmonad.zsh
 source $HOME/scripts/ros.zsh
 # Customize to your needs...
-export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/scripts/bin
 
 fpath=($HOME/scripts/completions $fpath)
 autoload -U compinit
