@@ -1,5 +1,5 @@
 #!/bin/zsh
-source $HOME/scripts/xmonad.zsh
+source $HOME/scripts/source/xmonad.zsh
 
 switch_screens
 
