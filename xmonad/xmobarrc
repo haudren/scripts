@@ -13,7 +13,6 @@ Config { font = "-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*"
                     , Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
-                    , Run Swap [] 10
 		    , Run BatteryP ["BAT1"]
 		    		   ["-t", "<acstatus><left>%",
 				    "-L", "10", "-H", "90", "-p", "3",
@@ -23,10 +22,11 @@ Config { font = "-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*"
 				    "-i", "詰",
 				    "-o", "別", "-f", "/sys/class/power_supply/ACAD/online"]
 				    600
+		    , Run Mpris1 "clementine" ["-t", "<artist> - [<tracknumber>] <title>"] 10
 		    , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %battery% | %cpu% | %memory% * %swap% | %eth0% | <fc=#ee9a00>%date%</fc>| %RJAK%"
+       , template = "%StdinReader% }{ %mpris1% | %battery% | %cpu% | %memory% | %eth0% | <fc=#ee9a00>%date%</fc>| %RJAK%"
        }
 
