@@ -52,9 +52,9 @@ myKeys = [
 	, ((0                     , 0x1008FF11), spawn "amixer -c 1 set Master 2-")
 	, ((0                     , 0x1008FF13), spawn "amixer -c 1 set Master 2+")
 	, ((0                     , 0x1008FF12), spawn "amixer -c 1 set Master toggle")
-	, ((0                     , 0x1008ff14), spawn "qdbus org.mpris.clementine /Player org.freedesktop.MediaPlayer.Pause")
-	, ((0                     , 0x1008ff26), spawn "qdbus org.mpris.clementine /Player org.freedesktop.MediaPlayer.Prev")
-	, ((0                     , 0x1008ff27), spawn "qdbus org.mpris.clementine /Player org.freedesktop.MediaPlayer.Next")
+	, ((0                     , 0x1008FF14), spawn "qdbus org.mpris.clementine /Player org.freedesktop.MediaPlayer.Pause")
+	, ((0                     , 0x1008FF16), spawn "qdbus org.mpris.clementine /Player org.freedesktop.MediaPlayer.Prev")
+	, ((0                     , 0x1008FF17), spawn "qdbus org.mpris.clementine /Player org.freedesktop.MediaPlayer.Next")
 	, ((0                     , xK_Print), spawn "scrot $HOME/Pictures/screen_%Y-%m-%d-%H-%M-%S.png -d 1")
 	]
 
