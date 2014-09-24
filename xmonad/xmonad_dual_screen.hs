@@ -51,7 +51,7 @@ myKeys = [
 	[((mod4Mask .|. shiftMask, xK_l), spawn "slock")
 	, ((0                     , 0x1008FF11), spawn "amixer -c 1 set Master 2-")
 	, ((0                     , 0x1008FF13), spawn "amixer -c 1 set Master 2+")
-	, ((0                     , 0x1008FF12), spawn "amixer -c 1 set Master toggle")
+	, ((0                     , 0x1008FF12), spawn "amixer -c 1 -q -D pulse sset Master toggle")
 	, ((0                     , 0x1008FF14), spawn "qdbus org.mpris.clementine /Player org.freedesktop.MediaPlayer.Pause")
 	, ((0                     , 0x1008FF16), spawn "qdbus org.mpris.clementine /Player org.freedesktop.MediaPlayer.Prev")
 	, ((0                     , 0x1008FF17), spawn "qdbus org.mpris.clementine /Player org.freedesktop.MediaPlayer.Next")
