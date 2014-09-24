@@ -103,10 +103,10 @@ function set_screens
 	done
 
 	get_active_screens
-	if [[ $screens =~ "eDP-1-0" ]]
+	if [[ $screens =~ "eDP1" ]]
 	then
-		echo 'eDP-1-0 is primary'
-		primary="eDP-1-0"
+		echo 'eDP1 is primary'
+		primary="eDP1"
 	else
 		set -- $screens
 		primary=$1
