@@ -1,0 +1,3 @@
+#compdef scr_mode
+
+	_arguments "1: :(single dual)"
