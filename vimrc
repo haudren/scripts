@@ -29,3 +29,5 @@ nnoremap : ;
 
 set wildmode=longest,list,full
 set wildmenu
+
+let g:jedi#completions_command = "<C-N>"
