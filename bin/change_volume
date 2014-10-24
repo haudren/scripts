@@ -3,4 +3,4 @@
 quote_mixer=$(amixer -c 1 | head -n 1 | grep -o "'.*'")
 mixer="${quote_mixer%\'}"
 mixer="${mixer#\'}"
-amixer -c 1 set $mixer $1 >> $HOME"/change_volume.log"
+amixer -c 1 set $mixer $1 >> /dev/null
