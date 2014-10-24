@@ -1,7 +1,7 @@
 #! /bin/zsh
 function calc()
 {
-echo "$@" | bc -l
+	echo "$@" | bc -l
 }
 
 alias calc='noglob calc'
