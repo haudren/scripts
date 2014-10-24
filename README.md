@@ -4,9 +4,9 @@ These are my dotfiles, even though the repository is not well named.
 
 Contents
 --------
-* [VIM][http://www.vim.org/]: I know, I still use pyflakes. I also use some of [Damien Conway's tricks][dconway] to make my life better.
-* [XMonad][http://xmonad.org/]: The only thing here is that I use two configs, one for single-monitor setup and one for dual monitor setup, along with a bunch of custom executables.
-* [Oh-My-Zsh][http://ohmyz.sh/]: Guilty as charged, I love Oh-My-Zsh, especially with a custom theme.
+* [VIM][vim]: I know, I still use pyflakes. I also use some of [Damien Conway's tricks][dconway] to make my life better.
+* [XMonad][xmonad]: The only thing here is that I use two configs, one for single-monitor setup and one for dual monitor setup, along with a bunch of custom executables.
+* [Oh-My-Zsh][ohmyzsh]: Guilty as charged, I love Oh-My-Zsh, especially with a custom theme.
 
 Install
 -------
@@ -22,3 +22,6 @@ sudo ln -s change_volume /usr/bin/change_volume
 
 [dconway]: https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup
 [dotbot]: https://github.com/anishathalye/dotbot
+[vim]: http://www.vim.org/
+[xmonad]: http://xmonad.org/
+[ohmyzsh]: https://github.com/robbyrussell/oh-my-zsh
