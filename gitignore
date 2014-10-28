@@ -6,6 +6,10 @@ build/*
 *.aux
 *.log
 *.pdf
+##Beamer
+*.toc
+*.nav
+*.snm
 #Python
 *.pyc
 #Vim
