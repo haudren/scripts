@@ -1,0 +1,3 @@
+#compdef note
+
+_arguments "1:config:($(ls $HOME/notes/*.md | sed -e 's/\.md//' -e 's/\/home\/herve\/notes\///'))"
