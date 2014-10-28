@@ -1,6 +1,22 @@
 #!/bin/zsh
 
-quote_mixer=$(amixer -c 1 | head -n 1 | grep -o "'.*'")
+cards=$(cat /proc/asound/cards | grep '\[' | sed -e 's/\[//' | awk '{print $1, $2}')
+#Dragonfly is priority, else PCH, else default to first
+df=$(echo $cards | grep 'DragonFly')
+pch=$(echo $cards | grep 'PCH')
+default=$(echo $cards | head -n 1)
+
+if [[ ! -z "$df" ]]
+then
+	card=${df:0:1}
+elif [[ ! -z "$pch" ]]
+then
+	card=${pch:0:1}
+else
+	card=${default:0:1}
+fi
+
+quote_mixer=$(amixer -c $card | head -n 1 | grep -o "'.*'")
 mixer="${quote_mixer%\'}"
 mixer="${mixer#\'}"
-amixer -c 1 set $mixer $1 >> /dev/null
+amixer -c $card set $mixer $1 >> /dev/null
