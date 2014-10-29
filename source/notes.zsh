@@ -2,7 +2,12 @@
 
 function note
 {
-	$EDITOR $HOME/notes/$1.md
+	if [[ -z "$1" ]]
+	then
+		notes
+	else
+		$EDITOR $HOME/notes/$1.md
+	fi
 }
 
 function notes
