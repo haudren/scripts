@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+TMP=".tmp"
+
+for file in $@
+do
+	dest=`dirname "${file}"`/`basename "${file}" | tr '[A-Z]' '[a-z]'`
+	echo $dest
+	mv $file $file$TMP
+	mv $file$TMP $dest
+done
