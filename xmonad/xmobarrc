@@ -27,6 +27,6 @@ Config { font = "-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %mpris1% | %battery% | %cpu% | %memory% | %eth0% | <fc=#ee9a00>%date%</fc>| %RJAK%"
+       , template = "%StdinReader% }{ %mpris1% | %battery% | %cpu% | %memory% | %eth0% | <action=`xcalendar`><fc=#ee9a00>%date%</fc></action> | %RJAK%"
        }
 
