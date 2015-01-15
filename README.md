@@ -15,11 +15,7 @@ I use [Dotbot][dotbot] to manage installation of my configuration. Everything sh
 ```
 ./install
 ```
-away from installing. Unfortunately, I could not yet add direct support for linking in a protected directory, so you will have to manually link "change_volume" and "xcalendar" to your PATH i.e.
-```
-sudo ln -s change_volume /usr/bin/change_volume
-```
-(This is because xmonad spawns commands in a default shell that does not seem to be the same as my current setup, and I went for the only place I was sure xmonad would find the executable). If you do not want to use this quick fix, simply drop back to using `amixer` directly in `xmonad.hs` and remove date widget.
+away from installing. Please note that in `xmonad/start-xmonad.zsh` we expand the `PATH` to be able to use custom executables. You may need to modify this to your heart's content.
 
 [dconway]: https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup
 [dotbot]: https://github.com/anishathalye/dotbot
