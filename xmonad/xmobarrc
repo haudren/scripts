@@ -9,6 +9,7 @@ Config { font = "-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*"
        , overrideRedirect = True
        , hideOnStart = False
        , persistent = True
+       , pickBroadest = False
        , commands = [ Run Weather "RJAK" ["-t","<station>: <tempC>C <skyCondition>","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
                     , Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
@@ -20,13 +21,13 @@ Config { font = "-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*"
 				    "--",
 				    "-O", "電",
 				    "-i", "詰",
-				    "-o", "別", "-f", "/sys/class/power_supply/ACAD/online"]
-				    600
+				    "-o", "別", "-f", "/sys/class/power_supply/ACAD/online"] 600
 		    , Run Mpris1 "clementine" ["-t", "<artist> - [<tracknumber>] <title>"] 10
 		    , Run StdinReader
+		    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %mpris1% | %battery% | %cpu% | %memory% | %eth0% | <action=`xcalendar`><fc=#ee9a00>%date%</fc></action> | %RJAK%"
+       , template = "%StdinReader% }{ %mpris1% | %battery% | %cpu% | %memory% | %eth0% | <action=`xcalendar` button=1><fc=#ee9a00>%date%</fc></action> | %RJAK%"
        }
 
