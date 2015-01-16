@@ -1,0 +1,3 @@
+#compdef build
+
+_arguments "1:buildtype:(debug release)"
