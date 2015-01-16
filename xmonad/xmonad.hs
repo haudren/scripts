@@ -12,7 +12,7 @@ import XMonad.Hooks.EwmhDesktops
 
 myWorkspaces = ["1:main","2:xp","3:py","4:mail"] ++ map show [5..9]
 
-myManageHooks = manageDocks <+> manageHook defaultConfig <+> composeAll [ isFullscreen --> doFullFloat ]
+myManageHooks = manageDocks <+> manageHook defaultConfig <+> composeAll [ isFullscreen --> doFullFloat  									className =? "xcalendar" --> doFloat]
 
 myLayoutHooks = smartBorders $ avoidStruts ( tiled ||| Mirror tiled ||| noBorders (fullscreenFull Full))
 	where

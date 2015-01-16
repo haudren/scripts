@@ -11,7 +11,11 @@ today = time.strftime("%d")
 true_cal = cal.replace(u'_\x08', '')
 
 #Init Tk
-root = Tk.Tk()
+root = Tk.Tk(className = 'xcalendar')
+root.wm_title("xcalendar")
+root.geometry('{}x{}+{}+{}'.format(200, 150,1500,20))
+root.resizable(width = False, height=False)
+
 text = Tk.Text(root, font=('Ubuntu Mono', 12))
 text.insert(Tk.INSERT, true_cal)
 
