@@ -4,6 +4,12 @@ config='xmonad.hs'
 single='xmonad.hs'
 dual='xmonad_dual_screen.hs'
 
+function black_screen
+{
+	echo "Turning off screen in 1 second"
+	sleep 1 && xset dpms force off
+}
+
 function get_resolution
 {
 	scrlist=$(xrandr | grep " connected")
