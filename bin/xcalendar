@@ -7,7 +7,7 @@ from subprocess import check_output
 cal = unicode(check_output(["cal"]), 'utf-8')
 
 #Get today and calendar, remove ascii color characters
-today = time.strftime("%d")
+today = time.strftime("%e")
 true_cal = cal.replace(u'_\x08', '')
 
 #Init Tk
@@ -24,7 +24,6 @@ text.tag_config("red", background="red")
 #Look for today from line 2 (line 1 is year-month) and highlight
 count = Tk.IntVar()
 index = text.search(today, text.index("2.0"), count=count)
-
 text.mark_set("matchStart", index)
 text.mark_set("matchEnd", "%s+%sc" % (index, count.get()))
 
