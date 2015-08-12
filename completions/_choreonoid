@@ -1,0 +1,9 @@
+#compdef choreonoid
+
+_arguments "1:cnoid:->cnoid"
+
+case "$state" in
+	cnoid)
+		_files -g "*.cnoid" && return 0
+		;;
+esac
