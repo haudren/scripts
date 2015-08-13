@@ -44,3 +44,5 @@ let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = "▲"
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args='--ignore=E111,E126,E226,E302'
+
+highlight SignColumn ctermbg=8
