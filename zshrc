@@ -20,6 +20,8 @@ alias fuerte='source /home/herve/ros/fuerte_workspace/setup.zsh'
 alias hydro='source /home/herve/ros/hydro_workspace/setup.zsh'
 alias indigo='source /home/herve/ros/indigo_workspace/setup.zsh'
 alias ladder='source /home/herve/ros/ladder_workspace/setup.zsh'
+alias catkin='source /home/herve/ros/catkin_workspace/devel/setup.zsh'
+alias catkin_2='source /home/herve/ros/catkin_2/devel/setup.zsh'
 
 alias pkgfuerte='export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home/herve/ros/fuerte_workspace'
 alias pkghydro='export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home/herve/ros/hydro_workspace'
