@@ -16,6 +16,7 @@ filetype plugin indent on
 
 au BufRead,BufNewFile *.launch setfiletype xml
 au BufRead,BufNewFile *.cnoid setfiletype yaml
+au BufRead,BufNewFile *.md set filetype=markdown
 
 set hlsearch
 hi Search ctermbg=77 "PaleSeaGreen
