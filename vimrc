@@ -15,6 +15,7 @@ autocmd InsertLeave * :set relativenumber
 filetype plugin indent on
 
 au BufRead,BufNewFile *.launch setfiletype xml
+au BufRead,BufNewFile *.cnoid setfiletype yaml
 
 set hlsearch
 
