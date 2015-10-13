@@ -63,6 +63,8 @@ stty stop undef # to unmap ctrl-s
 #Expand fpath:
 
 source $ZSH/oh-my-zsh.sh
+source /usr/share/autojump/autojump.sh
+eval "$(thefuck --alias)"
 
 #Source all functions
 for f in $HOME/scripts/source/*;
@@ -76,3 +78,5 @@ export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/s
 fpath=($HOME/scripts/completions $fpath)
 autoload -U compinit
 compinit
+
+export TERM=xterm-256color
