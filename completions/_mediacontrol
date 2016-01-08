@@ -1,0 +1,3 @@
+#compdef mediacontrol
+
+_arguments "1: :(pause next prev)"
