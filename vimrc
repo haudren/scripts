@@ -49,6 +49,14 @@ let g:syntastic_warning_symbol = "▲"
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args='--ignore=E111,E126,E226,E302 --max-line-length=110 --max-complexity=10'
 
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 highlight SignColumn ctermbg=8
 
 function! s:DiffWithSaved()
@@ -71,7 +79,7 @@ let g:lightline = {
       \   'right': [ [ 'syntastic', 'lineinfo' ], [  'fileformat', 'fileencoding'  ] ]
       \ },
       \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"書禁止":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
       \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
       \ },
