@@ -1,0 +1,41 @@
+#!/bin/zsh
+
+services=$(qdbus)
+paths=()
+
+case "$1" in
+  pause)
+    command=PlayPause
+    ;;
+  next)
+    command=Next
+    ;;
+  prev)
+    command=Previous
+    ;;
+  *)
+    echo "Unknown command"
+    exit 1
+  ;;
+esac
+
+case "$services" in
+  *spotify*)
+    paths+=( com.spotify.qt )
+    ;;
+  *clementine*)
+    paths+=( org.mpris.clementine )
+    ;;
+  * )
+    echo "No known player found"
+    exit 2
+    ;;
+esac
+
+device=/org/mpris/MediaPlayer2
+function=org.mpris.MediaPlayer2.Player.$command
+
+for path in $paths
+do
+	/usr/bin/qdbus $path $device $function
+done

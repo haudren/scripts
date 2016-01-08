@@ -38,8 +38,8 @@ main = do
 		, ((0                     , 0x1008FF11), spawn "change_volume 2-")
 		, ((0                     , 0x1008FF13), spawn "change_volume 2+")
 		, ((0                     , 0x1008FF12), spawn "change_volume toggle")
-		, ((0                     , 0x1008FF14), spawn "qdbus org.mpris.clementine /Player org.freedesktop.MediaPlayer.Pause")
-		, ((0                     , 0x1008FF16), spawn "qdbus org.mpris.clementine /Player org.freedesktop.MediaPlayer.Prev")
-		, ((0                     , 0x1008FF17), spawn "qdbus org.mpris.clementine /Player org.freedesktop.MediaPlayer.Next")
+		, ((0                     , 0x1008FF14), spawn "mediacontrol pause")
+		, ((0                     , 0x1008FF16), spawn "mediacontrol prev")
+		, ((0                     , 0x1008FF17), spawn "mediacontrol next")
 		, ((0                     , xK_Print), spawn "scrot $HOME/Pictures/screen_%Y-%m-%d-%H-%M-%S.png -d 1")
 		]
