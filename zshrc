@@ -28,6 +28,9 @@ alias pkghydro='export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home/herve/ros/hydro_
 alias bag_error='/home/herve/scripts/bag_error.py'
 
 alias rosservice='noglob rosservice'
+
+alias latexdiff='latexdiff -c ${HOME}/.latexdiff'
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -57,14 +60,11 @@ alias rosservice='noglob rosservice'
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git autojump thefuck)
 stty stop undef # to unmap ctrl-s
 
 #Expand fpath:
-
 source $ZSH/oh-my-zsh.sh
-source /usr/share/autojump/autojump.sh
-eval "$(thefuck --alias)"
 
 #Source all functions
 for f in $HOME/scripts/source/*;
@@ -72,8 +72,10 @@ do
 	source $f;
 done
 
+export GUROBI_HOME=/opt/gurobi650/linux64
 # Customize to your needs...
-export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/scripts/bin
+export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/scripts/bin:$GUROBI_HOME/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GUROBI_HOME/lib
 
 fpath=($HOME/scripts/completions $fpath)
 autoload -U compinit

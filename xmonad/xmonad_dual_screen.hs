@@ -24,6 +24,8 @@ myLayoutHooks = smartBorders $ avoidStruts ( tiled ||| Mirror tiled ||| noBorder
 		ratio = 1/2
 		delta = 3/100
 
+myHandleEventHook = handleEventHook defaultConfig <+> XMonad.Hooks.EwmhDesktops.fullscreenEventHook
+
 --keyBindings conf = let m = modMask conf in fromList $
 --           [((m .|. modm, k), windows $ onCurrentScreen f i)
 --            | (i, k) <- zip (workspaces' conf) [xK_1 .. xK_9]
@@ -66,6 +68,7 @@ main = do
 		manageHook = myManageHooks,
 		layoutHook = myLayoutHooks,
 		borderWidth = 2,
+		handleEventHook =myHandleEventHook,
 		logHook = dynamicLogWithPP xmobarPP
 				{ ppOutput = hPutStrLn xmproc
 				, ppTitle = xmobarColor "green" "" . shorten 50
