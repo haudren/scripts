@@ -21,7 +21,7 @@ esac
 
 case "$services" in
   *spotify*)
-    paths+=( com.spotify.qt )
+    paths+=( org.mpris.MediaPlayer2.spotify )
     ;;
   *clementine*)
     paths+=( org.mpris.clementine )
