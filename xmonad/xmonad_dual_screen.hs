@@ -24,7 +24,7 @@ myLayoutHooks = smartBorders $ avoidStruts ( tiled ||| Mirror tiled ||| noBorder
 		ratio = 1/2
 		delta = 3/100
 
-myHandleEventHook = handleEventHook defaultConfig <+> XMonad.Hooks.EwmhDesktops.fullscreenEventHook
+myHandleEventHook = handleEventHook defaultConfig
 
 --keyBindings conf = let m = modMask conf in fromList $
 --           [((m .|. modm, k), windows $ onCurrentScreen f i)

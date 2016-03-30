@@ -60,7 +60,7 @@ alias latexdiff='latexdiff -c ${HOME}/.latexdiff'
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git autojump thefuck)
+plugins=(git autojump thefuck command-not-found pip)
 stty stop undef # to unmap ctrl-s
 
 #Expand fpath:
@@ -74,7 +74,7 @@ done
 
 export GUROBI_HOME=/opt/gurobi650/linux64
 # Customize to your needs...
-export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/scripts/bin:$GUROBI_HOME/bin
+export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/scripts/bin:$HOME/.local/bin:$GUROBI_HOME/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GUROBI_HOME/lib
 
 fpath=($HOME/scripts/completions $fpath)

@@ -25,9 +25,10 @@ Config { font = "xft:IPAexGothic:size=9:bold:antialias=true"
 		    , Run Mpris1 "clementine" ["-t", "<artist> - [<tracknumber>] <title>"] 10
 		    , Run StdinReader
 		    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+		    , Run Kbd [("us(intl)","INT"), ("us", "US")]
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %mpris1% | %battery% | %cpu% | %memory% | %eth0% | <action=`xcalendar` button=1><fc=#ee9a00>%date%</fc></action> | %RJAK%"
+       , template = "%StdinReader% }{ %mpris1% | %kbd% | %battery% | %cpu% | %memory% | %eth0% | <action=`xcalendar` button=1><fc=#ee9a00>%date%</fc></action> | %RJAK%"
        }
 
