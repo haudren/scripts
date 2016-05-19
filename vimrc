@@ -34,29 +34,6 @@ nnoremap : ;
 set wildmode=longest,list,full
 set wildmenu
 
-let g:jedi#completions_command = "<C-N>"
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_error_symbol = '✘'
-let g:syntastic_warning_symbol = "▲"
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args='--ignore=E111,E126,E226,E302 --max-line-length=110 --max-complexity=10'
-
-" Trigger configuration.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
 highlight SignColumn ctermbg=8
 
 function! s:DiffWithSaved()
@@ -88,25 +65,21 @@ let g:lightline = {
       \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
       \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
       \ },
-      \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
-      \ },
-      \ 'component_type': {
-      \   'syntastic': 'error',
-      \ },
       \ 'subseparator': { 'left': '|', 'right': '|' }
       \ }
 
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_extra_conf_globlist = ['~/.ycm_extra_conf.py']
 
-augroup AutoSyntastic
-    autocmd!
-    autocmd BufWritePost *.c,*.cpp,*.py call s:syntastic()
-augroup END
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
-function! s:syntastic()
-    SyntasticCheck
-    call lightline#update()
-endfunction
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 if !has('gui_running')
     set t_Co=256

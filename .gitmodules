@@ -37,3 +37,15 @@
 [submodule "vim/bundle/vim-snippets"]
 	path = vim/bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
+[submodule "vim/bundle/vimwiki"]
+	path = vim/bundle/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
+[submodule "vim/bundle/YouCompleteMe"]
+	path = vim/bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "vim/bundle/vimtex"]
+	path = vim/bundle/vimtex
+	url = https://github.com/lervag/vimtex.git
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
