@@ -31,6 +31,8 @@ alias rosservice='noglob rosservice'
 
 alias latexdiff='latexdiff -c ${HOME}/.latexdiff'
 
+alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:numeric=1'
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -60,8 +62,10 @@ alias latexdiff='latexdiff -c ${HOME}/.latexdiff'
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git autojump thefuck command-not-found pip)
+zstyle :omz:plugins:ssh-agent identities clef_lirmm_2_openssh.ppk
+plugins=(git autojump thefuck command-not-found pip ssh-agent)
 stty stop undef # to unmap ctrl-s
+
 
 #Expand fpath:
 source $ZSH/oh-my-zsh.sh
