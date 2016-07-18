@@ -7,6 +7,8 @@
     ~/.xmobarrc: xmonad/xmobarrc
     ~/.git_template: git_template
     ~/.ycm_extra_conf.py: ycm_extra_conf.py
+    ~/.latexmkrc: latexmkrc
+    ~/.tmux.conf: tmux.conf
 
 - shell:
   - [git config --global core.excludesfile ~/.gitignore, Setting up gitignore]
