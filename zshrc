@@ -63,7 +63,7 @@ alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:numeric=1'
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 zstyle :omz:plugins:ssh-agent identities clef_lirmm_2_openssh.ppk
-plugins=(git autojump thefuck command-not-found pip ssh-agent)
+plugins=(git autojump thefuck command-not-found pip ssh-agent tmux)
 stty stop undef # to unmap ctrl-s
 
 
