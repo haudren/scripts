@@ -118,7 +118,7 @@ function set_screens
 		primary=$1
 		echo primary" is primary"
 	fi
-	screens=$(echo $screens | sed -e "s/\b$primary\b//g")
+	screens=("${(@f)}$(echo $screens | sed -e 's/\b$primary\b//g')")
 
 	xcom="xrandr --output "$primary" --auto"
 	previous=$primary
