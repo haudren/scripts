@@ -1,5 +1,6 @@
 #C++
 build/*
+_build/*
 *.out
 #Latex
 *.synctex.gz
@@ -8,6 +9,12 @@ build/*
 *.pdf
 *.bbl
 *.blg
+*.fdb_latexmk
+*.fls
+##Latex-nomencl
+*.ilg
+*.nlo
+*.nls
 ##Beamer
 *.toc
 *.nav
