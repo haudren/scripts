@@ -1,0 +1,36 @@
+#compdef tmuxp
+
+_arguments \
+	'1:action:->action'\
+	'2:file:->file'
+
+case "$state" in
+	action)
+		local actions; actions=(
+		'convert:Convert a tmuxp config between JSON and YAML.'
+		'freeze:Snapshot a session into a config.'
+		'import:Import a teamocil/tmuxinator config.'
+		'load:Load tmuxp workspaces.'
+		)
+		_describe -t actions 'action' actions && return 0
+		;;
+
+	file)
+		case $words[2] in
+		convert)
+			_files -g "*.yaml" && return 0
+			;;
+		import)
+			_files -g "*.yaml" && return 0
+			;;
+		freeze)
+			local sessions; sessions=(${(f)"$(tmux list-sessions)"})
+			_describe -t sessions 'sessions' sessions && return 0
+			;;
+		load)
+			local files; files=(${(f)"$(ls $HOME/.tmuxp/*.yaml)"})
+			files=(${files:t:r})
+			_describe -t files 'files' files && return 0
+			;;
+		esac
+esac

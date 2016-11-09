@@ -66,6 +66,7 @@ zstyle :omz:plugins:ssh-agent identities clef_lirmm_2_openssh.ppk
 plugins=(git autojump thefuck command-not-found pip ssh-agent tmux)
 stty stop undef # to unmap ctrl-s
 
+export DISABLE_AUTO_TILE='true'
 
 #Expand fpath:
 source $ZSH/oh-my-zsh.sh
@@ -76,9 +77,9 @@ do
 	source $f;
 done
 
-export GUROBI_HOME=/opt/gurobi650/linux64
+export GUROBI_HOME=/opt/gurobi701/linux64
 # Customize to your needs...
-export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/scripts/bin:$HOME/.local/bin:$GUROBI_HOME/bin
+export PATH=/opt/texbin:$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/scripts/bin:$HOME/.local/bin:$GUROBI_HOME/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GUROBI_HOME/lib
 
 fpath=($HOME/scripts/completions $fpath)
