@@ -133,8 +133,14 @@ def FlagsForCompilationDatabase(root, filename):
 
 def FlagsForFile(filename):
     root = subprocess.Popen(['git', 'rev-parse', '--show-toplevel'], stdout=subprocess.PIPE).communicate()[0].rstrip().decode('utf-8')
-    root = os.path.join(root, 'build')
-    compilation_db_flags = FlagsForCompilationDatabase(root, filename)
+    build_dirs = ['build', '_build', '_build/_build_gcc_Debug', '_build/_build_gcc_Release']
+    for build_dir in build_dirs:
+        path = os.path.join(root, build_dir)
+        compilation_db_flags = FlagsForCompilationDatabase(path, filename)
+        if compilation_db_flags is not None:
+            break
+        else:
+            print "Did not find anything in {}".format(path)
     if compilation_db_flags:
         final_flags = compilation_db_flags
     else:
