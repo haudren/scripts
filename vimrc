@@ -85,6 +85,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique @pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_complete_recursive_bib = 1
 
 " Vimtex + ycm
 if !exists('g:ycm_semantic_triggers')
@@ -101,8 +102,27 @@ let g:ycm_semantic_triggers.tex = [
       \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
       \ ]
 
-
-
 if !has('gui_running')
     set t_Co=256
 endif
+
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+" Add a mapping for autofix
+map <C-S-f> :YcmCompleter FixIt<CR>
+
+" Select a single char instead of switching to insert mode
+:nnoremap s :exec "normal i".nr2char(getchar())."\e"<CR>
+:nnoremap S :exec "normal a".nr2char(getchar())."\e"<CR>
+
+" netrw settings
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+
+" Run flake8 via Neomake on saving python files
+let g:neomake_flake8_args = ['--ignore=E111']
+autocmd! BufWritePost *.py Neomake flake8
