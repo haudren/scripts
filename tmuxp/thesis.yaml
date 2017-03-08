@@ -1,0 +1,19 @@
+session_name: thesis
+windows:
+- layout: 1e7f,213x56,0,0{107x56,0,0,0,105x56,108,0,1}
+  options: {}
+  panes:
+  - cd /home/herve/latex/thesis-manuscript
+  - focus: 'true'
+    shell_command:
+    - cd /home/herve/latex/thesis-manuscript/tail
+    - vim references.bib
+  window_name: work
+- focus: 'true'
+  layout: c65f,213x56,0,0,2
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: vim thesis.tex
+  start_directory: /home/herve/latex/thesis-manuscript
+  window_name: compile
