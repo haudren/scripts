@@ -16,7 +16,8 @@ import XMonad.Hooks.EwmhDesktops
 myWorkspaces = withScreens 2 $ ["1:main","2:xp","3:py","4:mail"] ++ map show [5..9]
 
 myManageHooks = manageDocks <+> manageHook defaultConfig <+> composeAll [ isFullscreen --> doFullFloat
-									, className =? "xcalendar" --> doFloat]
+									, className =? "xcalendar" --> doFloat
+									, className =? "Xfce4-notifyd" --> doIgnore ]
 
 myLayoutHooks = windowNavigation $ smartBorders $ avoidStruts ( tiled ||| Mirror tiled ||| noBorders (fullscreenFull Full))
 	where
@@ -25,7 +26,9 @@ myLayoutHooks = windowNavigation $ smartBorders $ avoidStruts ( tiled ||| Mirror
 		ratio = 1/2
 		delta = 3/100
 
-myHandleEventHook = handleEventHook defaultConfig
+myHandleEventHook = ewmhDesktopsEventHook <+> handleEventHook defaultConfig
+
+myStartupHook = ewmhDesktopsStartup
 
 --keyBindings conf = let m = modMask conf in fromList $
 --           [((m .|. modm, k), windows $ onCurrentScreen f i)
@@ -78,6 +81,7 @@ main = do
 		workspaces = myWorkspaces,
 		manageHook = myManageHooks,
 		layoutHook = myLayoutHooks,
+		startupHook = myStartupHook,
 		borderWidth = 2,
 		handleEventHook =myHandleEventHook,
 		logHook = dynamicLogWithPP xmobarPP
