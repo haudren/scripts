@@ -109,16 +109,22 @@ function set_screens
 	done
 
 	get_active_screens
-	if [[ $screens =~ "eDP1" ]]
+	echo "All screens: "$screens
+	echo "End all screens"
+
+	screens=("${(@f)$(echo $screens | sed -e 's/\b$primary\b//g')}")
+
+	integrated="eDP-1-0"
+	if [[ ${screens[(i)$integrated]} -le ${#screens} ]]
 	then
-		echo 'eDP1 is primary'
-		primary="eDP1"
+		echo $integrated' is primary'
+		primary=$integrated
+		screens[${screens[(i)$integrated]}]=()
 	else
-		set -- $screens
-		primary=$1
-		echo primary" is primary"
+		primary=$screens[1]
+		screens[1]=()
+		echo $primary" is primary"
 	fi
-	screens=("${(@f)}$(echo $screens | sed -e 's/\b$primary\b//g')")
 
 	xcom="xrandr --output "$primary" --auto"
 	previous=$primary
@@ -130,6 +136,7 @@ function set_screens
 		previous=$screen
 	done
 	echo "Found all screens"
+	echo "EXecuting $xcom"
 	eval $xcom
 }
 
