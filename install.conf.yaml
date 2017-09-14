@@ -9,6 +9,7 @@
     ~/.ycm_extra_conf.py: ycm_extra_conf.py
     ~/.latexmkrc: latexmkrc
     ~/.tmux.conf: tmux.conf
+    ~/.tmux: tmux
     ~/.tmuxp: tmuxp
 
 - shell:
