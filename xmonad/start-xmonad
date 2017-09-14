@@ -8,5 +8,6 @@ export PATH="${PATH}:${HOME}/scripts/bin"
 firefox&
 thunderbird&
 gnome-terminal&
+SpiderOakONE --headless&
 
 exec xmonad
