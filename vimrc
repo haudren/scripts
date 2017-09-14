@@ -86,6 +86,7 @@ let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique @pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 let g:vimtex_complete_recursive_bib = 1
+let g:vimtex_quickfix_mode = 2
 
 " Vimtex + ycm
 if !exists('g:ycm_semantic_triggers')
@@ -124,5 +125,8 @@ let g:netrw_banner = 0
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
 " Run flake8 via Neomake on saving python files
-let g:neomake_flake8_args = ['--ignore=E111']
+let g:neomake_flake8_args = ['--ignore=E111,E226', '--format=default']
+let g:neomake_verbose = -1
 autocmd! BufWritePost *.py Neomake flake8
+
+syntax on
