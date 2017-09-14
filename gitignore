@@ -1,6 +1,7 @@
 #C++
 build/*
 _build/*
+build_ninja/*
 *.out
 #Latex
 *.synctex.gz
@@ -15,6 +16,10 @@ _build/*
 *.ilg
 *.nlo
 *.nls
+*.glo
+*.gst
+##Latexmk
+*.auxlock
 ##Beamer
 *.toc
 *.nav
