@@ -27,7 +27,7 @@
 
 
 - link:
-    ~/.vim: vim/,
+    ~/.vim: vim/
     ~/.oh-my-zsh: zsh/oh-my-zsh
 
 - shell:
