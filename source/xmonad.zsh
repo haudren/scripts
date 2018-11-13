@@ -132,7 +132,7 @@ function set_screens
 	for screen in $screens
 	do
 		echo $screen" is secondary"
-		xcom=$xcom" --output "$screen" --auto --right-of "$previous
+		xcom=$xcom" --output "$screen" --auto --left-of "$previous
 		previous=$screen
 	done
 	echo "Found all screens"

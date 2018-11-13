@@ -14,7 +14,6 @@ alias ...='cd ../..'
 alias -g ....=../../..
 
 alias glcplay='aoss glc-play'
-alias julia=/home/herve/git/julia/julia
 
 alias fuerte='source /home/herve/ros/fuerte_workspace/setup.zsh'
 alias hydro='source /home/herve/ros/hydro_workspace/setup.zsh'

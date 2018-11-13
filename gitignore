@@ -27,6 +27,9 @@ build_ninja/*
 #Python
 *.pyc
 #Vim
-*.swp
+.*.swp
+.*.swo
+.*.swn
+.*.sw?
 #Git
 *.orig

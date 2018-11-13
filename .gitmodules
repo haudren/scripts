@@ -61,3 +61,12 @@
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "vim/bundle/julia-vim"]
+	path = vim/bundle/julia-vim
+	url = https://github.com/JuliaEditorSupport/julia-vim
+[submodule "vim/bundle/Jenkinsfile-vim-syntax"]
+	path = vim/bundle/Jenkinsfile-vim-syntax
+	url = git@github.com:martinda/Jenkinsfile-vim-syntax.git
+[submodule "vim/bundle/vim-ros"]
+	path = vim/bundle/vim-ros
+	url = https://github.com/taketwo/vim-ros
