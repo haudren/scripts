@@ -71,5 +71,5 @@
 	path = vim/bundle/vim-ros
 	url = https://github.com/taketwo/vim-ros
 [submodule "vim/bundle/bundle/dracula-theme"]
-	path = vim/bundle/bundle/dracula-theme
+	path = vim/bundle/dracula-theme
 	url = git@github.com:dracula/vim.git

@@ -130,3 +130,4 @@ let g:neomake_verbose = -1
 autocmd! BufWritePost *.py Neomake flake8
 
 syntax on
+color dracula
