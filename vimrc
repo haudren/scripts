@@ -115,10 +115,6 @@ noremap <Right> <NOP>
 " Add a mapping for autofix
 map <C-S-f> :YcmCompleter FixIt<CR>
 
-" Select a single char instead of switching to insert mode
-:nnoremap s :exec "normal i".nr2char(getchar())."\e"<CR>
-:nnoremap S :exec "normal a".nr2char(getchar())."\e"<CR>
-
 " netrw settings
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
