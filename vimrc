@@ -1,5 +1,27 @@
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+call plug#begin('~/.vim/plugged/')
+
+Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'Valloric/YouCompleteMe'
+Plug 'dracula/vim'
+Plug 'itchyny/lightline.vim'
+Plug 'neomake/neomake'
+Plug 'rust-lang/rust.vim'
+Plug 'ervandew/supertab'
+Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-fugitive'
+Plug 'ivanov/vim-ipython'
+Plug 'tpope/vim-obsession'
+Plug 'racer-rust/vim-racer'
+Plug 'taketwo/vim-ros'
+Plug 'kshenoy/vim-signature'
+Plug 'tpope/vim-sleuth'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'lervag/vimtex'
+Plug 'vimwiki/vimwiki'
+
+call plug#end()
 
 set number
 set splitbelow
