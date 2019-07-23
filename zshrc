@@ -81,8 +81,11 @@ export GUROBI_HOME=/opt/gurobi701/linux64
 export PATH=/opt/texbin:$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$HOME/scripts/bin:$HOME/.local/bin:$GUROBI_HOME/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GUROBI_HOME/lib
 
-fpath=($HOME/scripts/completions $fpath)
+fpath=($HOME/scripts/completions /usr/share/zsh/site-functions $fpath)
 autoload -U compinit
 compinit
 
 export TERM=xterm-256color
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'

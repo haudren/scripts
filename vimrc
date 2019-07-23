@@ -12,7 +12,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'ivanov/vim-ipython'
 Plug 'tpope/vim-obsession'
 Plug 'racer-rust/vim-racer'
-Plug 'taketwo/vim-ros'
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-sleuth'
 Plug 'honza/vim-snippets'
@@ -20,6 +19,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'lervag/vimtex'
 Plug 'vimwiki/vimwiki'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 

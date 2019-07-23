@@ -10,25 +10,25 @@ Config { font = "xft:IPAexGothic:size=9:bold:antialias=true"
        , hideOnStart = False
        , persistent = True
        , pickBroadest = False
-       , commands = [ Run Weather "RJAK" ["-t","<station>: <tempC>C <skyCondition>","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
-                    , Run Network "eth0" ["-L","0","-H","128","--normal","green","--high","red"] 10
+       , commands = [ Run Weather "RJAA" ["-t","<station>: <tempC>C <skyCondition>","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 3600
+                    , Run Network "enx00e04c6862d6" ["-L","0","-H","128","--normal","green","--high","red"] 10
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
-		    , Run BatteryP ["BAT1"]
+		    , Run BatteryP ["BAT0"]
 		    		   ["-t", "<acstatus><left>%",
 				    "-L", "10", "-H", "90", "-p", "3",
 				    "-l", "red", "-n", "cyan", "-h", "green",
 				    "--",
 				    "-O", "電",
 				    "-i", "詰",
-				    "-o", "別", "-f", "/sys/class/power_supply/ACAD/online"] 600
+				    "-o", "別", "-f", "/sys/class/power_supply/AC0/online"] 60
 		    , Run Mpris1 "clementine" ["-t", "<artist> - [<tracknumber>] <title>"] 10
 		    , Run StdinReader
 		    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
-		    , Run Kbd [("us(intl)","INT"), ("us", "US")]
+		    , Run Kbd [("us(alt-intl)","INT"), ("us", "US")]
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %mpris1% | %kbd% | %battery% | %cpu% | %memory% | %eth0% | <action=`xcalendar` button=1><fc=#ee9a00>%date%</fc></action> | %RJAK%"
+       , template = "%StdinReader% }{ %mpris1% | %kbd% | %battery% | %cpu% | %memory% | %enx00e04c6862d6% | <action=`xcalendar` button=1><fc=#ee9a00>%date%</fc></action> | %RJAA%"
        }
 
